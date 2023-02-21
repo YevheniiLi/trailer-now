@@ -17,4 +17,4 @@ const modelOptions = {
     timestamps: true,
 };
 
-export default modelOptions;
+export default modelOptions; 
