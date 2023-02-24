@@ -26,7 +26,7 @@ const routes = [
         state: 'home'
     },
     {
-        path: '/person/:/personId',
+        path: '/person/:personId',
         element: <PersonDetail />,
         state: 'person.detail'
     },
@@ -67,7 +67,7 @@ const routes = [
         element: <MediaList />
     },
     {
-        path: '/:mediaType/:mediaId',
+        path: '/:mediaType/:mediaid',
         element: <MediaDetail />
     }
 ]
