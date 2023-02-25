@@ -24,7 +24,7 @@ const GlobalLoading = () => {
         sx={{
           opacity: isLoading ? 1 : 0,
           pointerEvents: "none",
-          transition: "all .3s easy",
+          transition: "all .3s ease",
           position: "fixed",
           width: "100vw",
           height: "100vh",
@@ -39,9 +39,10 @@ const GlobalLoading = () => {
             top: "50%",
             left: "50%",
             transform: "translate (-50%, -50%)",
-          }}>
-            <Logo />
-          </Box>
+          }}
+        >
+          <Logo />
+        </Box>
       </Paper>
     </>
   );
