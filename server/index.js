@@ -16,7 +16,7 @@ app.use(cookieParser());
 
 app.use('/api/v1', routes)
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 
 const server = http.createServer(app)
 

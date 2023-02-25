@@ -48,4 +48,5 @@ const GlobalLoading = () => {
   );
 };
 
+
 export default GlobalLoading;

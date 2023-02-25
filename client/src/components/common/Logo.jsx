@@ -4,7 +4,7 @@ const Logo = () => {
   const theme = useTheme();
 
   return (
-    <Typography fontWeight="700" fontSize="1.7rem">
+    <Typography sx={{ fontWeight: 700, fontSize: "1.7rem" }}>
       Moon
       <span
         style={{
