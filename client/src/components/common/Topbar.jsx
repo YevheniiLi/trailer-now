@@ -87,7 +87,7 @@ const Topbar = () => {
               <Box sx={{ marginRight: "30px" }}>
                 <Logo />
               </Box>
-              {menuConfigs.main.map((item, index) => {
+              {menuConfigs.main.map((item, index) => (
                 <Button 
                 key={index}
                 sx={{
@@ -100,7 +100,7 @@ const Topbar = () => {
                 >
                     {item.display}
                 </Button>
-              })}
+              ))}
               <IconButton sx={{color: 'inherit'}}
               onClick={onSwithTheme}
               >
