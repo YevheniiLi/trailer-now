@@ -8,6 +8,7 @@ import routes from "./routes/routes";
 import PageWrapper from "./components/common/PageWrapper";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
 const App = () => {
   const { themeMode } = useSelector((state) => state.themeMode);
 
