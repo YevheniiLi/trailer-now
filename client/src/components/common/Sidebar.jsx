@@ -12,9 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import menuConfigs from "../../configs/menu.configs";
 import Logo from "./Logo";
-import uiConfigs from "../../configs/ui.configs";
+// import uiConfigs from "../../configs/ui.configs";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
+
 import { themeModes } from "../../configs/theme.configs";
 import { setThemeMode } from "../../redux/features/themeModeSlice";
 
@@ -24,7 +25,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
   const { appState } = useSelector((state) => state.appState);
   const { themeMode } = useSelector((state) => state.themeMode);
 
-  const sidebarWidth = uiConfigs.size.sidebarWidth;
+  // const sidebarWidth = uiConfigs.size.sidebarWidth;
 
   const onSwitchTheme = () => {
     const theme =
@@ -104,7 +105,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
         <Typography variant="h6" marginBottom="20px">
           THEME
         </Typography>
-        <ListItemButton>
+        <ListItemButton onClick={onSwitchTheme}>
           <ListItemIcon>
             {themeMode === themeModes.dark && <DarkModeOutlinedIcon />}
             {themeMode === themeModes.light && <WbSunnyOutlinedIcon />}
@@ -129,7 +130,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
       sx={{
         "& .MuiDrawer-Paper": {
           boxSizing: "border-box",
-          widh: sidebarWidth,
+          // widh: sidebarWidth,
           borderRadius: "0px",
         },
       }}
