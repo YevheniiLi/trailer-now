@@ -24,7 +24,7 @@ const handleClose = () => dispatch(setAuthModalOpen(false))
 const switchAuthState = (state) => setAction(state)
 
   return (
-    <div>AuthModal</div>
+    <div></div>
   )
 }
 
