@@ -10,17 +10,20 @@ const privateClient = axios.create({
   }
 });
 
-privateClient.interceptors.request.interceptors((config) => {
+privateClient.interceptors.request.use((config) => {
   config.headers["Content-Type"] = "application/json";
   config.headers["Authorization"] = `Bearer ${localStorage.getItem("actkn")}`;
   return config;
 });
 
-privateClient.interceptors.response.interceptors((response) => {
-  if (response && response.data) return response.data;
-  return response;
-}, (error) => {
-  throw error.response.data;
-});
+privateClient.interceptors.response.use(
+  (response) => {
+    if (response && response.data) return response.data;
+    return response;
+  },
+  (error) => {
+    throw error.response.data;
+  }
+);
 
 export default privateClient;
