@@ -56,7 +56,7 @@ router.post(
     .isLength({ min: 8 })
     .withMessage("password minimum 8 characters"),
   requestHandler.validate,
-  userController.sighin
+  userController.signin
 );
 
 router.put(

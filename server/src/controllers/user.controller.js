@@ -35,7 +35,7 @@ const signup = async (req, res) => {
   }
 };
 
-const sighin = async (req, res) => {
+const signin = async (req, res) => {
   try {
     const { username, password } = req.body;
 
@@ -103,7 +103,7 @@ const getInfo = async (req, res) => {
 
 export default {
   signup,
-  sighin,
+  signin,
   getInfo,
   updatePassword,
 };
