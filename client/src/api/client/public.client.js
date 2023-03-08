@@ -10,7 +10,7 @@ const publicClient = axios.create({
   },
 });
 
-publicClient.interceptors.use(async (config) => {
+publicClient.interceptors.request.use(async (config) => {
   return {
     ...config,
     headers: {
