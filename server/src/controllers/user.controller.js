@@ -8,14 +8,15 @@ const signup = async (req, res) => {
 
     const checkUser = await userModel.findOne({ username });
 
-    if (checkUser) return;
-    responseHandler.badrequest(res, "username already used");
+    if (checkUser) {
+      return responseHandler.badrequest(res, "username already used");
+    }
 
     const user = new userModel();
 
     user.displayName = displayName;
     user.username = username;
-    user.setPassword = password;
+    user.setPassword(password);
 
     await user.save();
 
@@ -30,7 +31,8 @@ const signup = async (req, res) => {
       ...user._doc,
       id: user.id,
     });
-  } catch {
+  } catch (err) {
+    console.error(err);
     responseHandler.error(res);
   }
 };
@@ -40,13 +42,16 @@ const signin = async (req, res) => {
     const { username, password } = req.body;
 
     const user = await userModel
-      .findByOne({ username })
+      .findOne({ username })
       .select("username password salt id displayName");
 
-    if (!user) return responseHandler.badrequest(res, "User not exist");
+    if (!user) {
+      return responseHandler.badrequest(res, "User not exist");
+    }
 
-    if (!user.validPassword(password))
+    if (!user.validPassword(password)) {
       return responseHandler.badrequest(res, "Wrong password");
+    }
 
     const token = jsonwebtoken.sign(
       { data: user.id },
@@ -62,7 +67,8 @@ const signin = async (req, res) => {
       ...user._doc,
       id: user.id,
     });
-  } catch {
+  } catch (err) {
+    console.error(err);
     responseHandler.error(res);
   }
 };
@@ -75,17 +81,21 @@ const updatePassword = async (req, res) => {
       .findById(req.user.id)
       .select("password id salt");
 
-    if (!user) return responseHandler.unauthorize(res);
+    if (!user) {
+      return responseHandler.unauthorize(res);
+    }
 
-    if (!user.validPassword(password))
+    if (!user.validPassword(password)) {
       return responseHandler.badrequest(res, "Wrong password");
+    }
 
     user.setPassword(newPassword);
 
     await user.save();
 
     responseHandler.ok(res);
-  } catch {
+  } catch (err) {
+    console.error(err);
     responseHandler.error(res);
   }
 };
@@ -94,9 +104,13 @@ const getInfo = async (req, res) => {
   try {
     const user = await userModel.findById(req.user.id);
 
-    if (!user) return responseHandler.notfound(res);
+    if (!user) {
+      return responseHandler.notfound(res);
+    }
+
     responseHandler.ok(res, user);
-  } catch {
+  } catch (err) {
+    console.error(err);
     responseHandler.error(res);
   }
 };

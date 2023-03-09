@@ -9,10 +9,27 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import userApi from "../../api/modules/user.api";
 import favoriteApi from '../../api/modules/favorite.api'
+import {setListFavorites, setUser} from '../../redux/features/userSlice'
 
 
 
 const MainLayout = () => {
+  const dispatch = useDispatch();
+
+  const { user } =  useSelector((state) => state.user)
+
+  useEffect(() => {
+    const authUser = async () => {
+      const { response, err} = await userApi.getInfo();
+      if (response) dispatch(setUser(response))
+      if (err) dispatch(setUser(null))
+    }
+    authUser();
+  },[dispatch])
+
+
+
+
   return (
     <>
       {/* global  */}
