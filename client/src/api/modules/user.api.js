@@ -1,60 +1,87 @@
 import privateClient from "../client/private.client";
-import publicClient from "../client/public.client";
+// import publicClient from "../client/public.client";
+import "whatwg-fetch";
 
 const userEndpoints = {
-  signin: "user/signin",
-  signup: "user/signup",
-  getInfo: "user/info",
-  passwordUpdate: "user/update-password",
+  signin: "/user/signin",
+  signup: "/user/signup",
+  getInfo: "/user/info",
+  passwordUpdate: "/user/update-password",
 };
 
 const userApi = {
   signin: async ({ username, password }) => {
     try {
-      console.log("send request");
-      const response = await publicClient.post(userEndpoints.signin, {
-        username,
-        password,
+      const response = await fetch(userEndpoints.signin, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
       });
-
-      return { response };
+      const data = await response.json();
+      return { data };
     } catch (err) {
-      console.log("err");
-      return { err };
+      return { error: err };
     }
   },
+
   signup: async ({ username, password, confirmPassword, displayName }) => {
     try {
-      const response = await publicClient.post(userEndpoints.signup, {
-        username,
-        password,
-        confirmPassword,
-        displayName,
+      const response = await fetch(userEndpoints.signup, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          password,
+          confirmPassword,
+          displayName,
+        }),
       });
-
-      return { response };
+      const data = await response.json();
+      return { data };
     } catch (err) {
-      return { err };
+      return { error: err };
     }
   },
+
   getInfo: async () => {
     try {
-      const response = await privateClient.get(userEndpoints.getInfo);
-      return { response };
+      const response = await fetch(privateClient + userEndpoints.getInfo, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      return { data };
     } catch (err) {
-      return { err };
+      return { error: err };
     }
   },
+
   passwordUpdate: async ({ password, newPassword, confirmPassword }) => {
     try {
-      const response = await privateClient.put(userEndpoints.passwordUpdate, {
-        password,
-        newPassword,
-        confirmPassword,
+      const response = await fetch(privateClient + userEndpoints.passwordUpdate, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          password,
+          newPassword,
+          confirmPassword,
+        }),
       });
-      return { response };
+      const data = await response.json();
+      return { data };
     } catch (err) {
-      return { err };
+      return { error: err };
     }
   },
 };

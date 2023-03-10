@@ -1,4 +1,4 @@
-import {configureStore} from '@reduxjs/toolkit'
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
 import authModalSlice from './features/authModalSlice';
 import globalLoadingSlice from './features/globalLoadingSlice';
 import themeModeSlice from './features/themeModeSlice';
@@ -12,7 +12,10 @@ const store = configureStore({
         authModal: authModalSlice,
         globalLoading: globalLoadingSlice,
         appState: appStateSlice,
-    }
+    },
+    middleware: getDefaultMiddleware({
+        serializableCheck:false,
+    }),
 })
 
 export default store;

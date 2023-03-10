@@ -32,18 +32,25 @@ const SigninForm = ({ switchAuthState }) => {
       setErrorMessage(undefined);
       setIsLoginRequest(true);
       console.log("form working");
-      const { response, err } = await userApi.signin(values);
-      setIsLoginRequest(false);
-
-      if (response) {
-        signinForm.resetForm();
-        dispatch(setUser(response));
-        dispatch(setAuthModalOpen(false));
-        toast.success("Sign in success");
+      
+      try {
+        const { response } = await userApi.signin(values);
+        setIsLoginRequest(false);
+    
+        if (response) {
+          signinForm.resetForm();
+          dispatch(setUser(response));
+          dispatch(setAuthModalOpen(false));
+          toast.success("Sign in success");
+        } else {
+          setErrorMessage("Invalid credentials");
+        }
+      } catch (err) {
+        setIsLoginRequest(false);
+        setErrorMessage(err.message || "Something went wrong");
       }
-
-      if (err) setErrorMessage(err.message);
     }
+    
   });
 
   return (

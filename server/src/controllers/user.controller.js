@@ -62,7 +62,7 @@ const signin = async (req, res) => {
     user.password = undefined;
     user.salt = undefined;
 
-    responseHandler.created(res, {
+    responseHandler.ok(res, {
       token,
       ...user._doc,
       id: user.id,
@@ -72,6 +72,7 @@ const signin = async (req, res) => {
     responseHandler.error(res);
   }
 };
+
 
 const updatePassword = async (req, res) => {
   try {
