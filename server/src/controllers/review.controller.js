@@ -8,15 +8,17 @@ const create = async (req, res) => {
     const review = new reviewModel({
       user: req.user.id,
       movieId,
-      ...req.body,
+      ...req.body
     });
 
     await review.save();
+
     responseHandler.created(res, {
       ...review._doc,
-      id: review,
+      id: review.id,
+      user: req.user
     });
-  } catch (error) {
+  } catch {
     responseHandler.error(res);
   }
 };
@@ -27,11 +29,14 @@ const remove = async (req, res) => {
 
     const review = await reviewModel.findOne({
       _id: reviewId,
-      user: req.user.id,
+      user: req.user.id
     });
 
     if (!review) return responseHandler.notfound(res);
+
     await review.remove();
+
+    responseHandler.ok(res);
   } catch {
     responseHandler.error(res);
   }
@@ -39,19 +44,14 @@ const remove = async (req, res) => {
 
 const getReviewsOfUser = async (req, res) => {
   try {
-    const reviews = await reviewModel
-      .find({
-        user: req.user.id,
-      })
-      .sort("-createdAt");
+    const reviews = await reviewModel.find({
+      user: req.user.id
+    }).sort("-createdAt");
+
     responseHandler.ok(res, reviews);
   } catch {
     responseHandler.error(res);
   }
 };
 
-export default {
-  create,
-  remove,
-  getReviewsOfUser,
-};
+export default { create, remove, getReviewsOfUser };

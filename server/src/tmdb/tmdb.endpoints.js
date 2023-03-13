@@ -1,24 +1,36 @@
-import tmbdConfig from "./tmbd.config.js";
+import tmdbConfig from "./tmdb.config.js";
 
 const tmdbEndpoints = {
-  mediaList: ({ mediaType, mediaCategory, page }) =>
-    tmbdConfig.getUrl(`${mediaType}/${mediaCategory}`, page),
-  mediaDetail: ({ mediaType, mediaId }) =>
-    tmbdConfig.getUrl(`${mediaType}/${mediaId}`),
-  mediaGenres: ({ mediaType }) => tmbdConfig.getUrl(`genre/${mediaType}/list`),
-  mediaCredits: ({ mediaType, mediaId }) =>
-    tmbdConfig.getUrl(`${mediaType}/${mediaId}/credits`),
-  mediaVideos: ({ mediaType, mediaId }) =>
-    tmbdConfig.getUrl(`${mediaType}/${mediaId}/videos`),
-  mediaRecommend: ({ mediaType, mediaId }) =>
-    tmbdConfig.getUrl(`${mediaType}/${mediaId}/recommendations`),
-  mediaImages: ({ mediaType, mediaId }) =>
-    tmbdConfig.getUrl(`${mediaType}/${mediaId}/images`),
-  mediaSearch: ({ mediaType, query, page }) =>
-    tmbdConfig.getUrl(`search/${mediaType}`, { query, page }),
-  personDetails: ({ personId }) => tmbdConfig.getUrl(`person/${personId}`),
-  personMedias: ({ personId }) =>
-    tmbdConfig.getUrl(`person/${personId}/combined_credits`),
+  mediaList: ({ mediaType, mediaCategory, page }) => tmdbConfig.getUrl(
+    `${mediaType}/${mediaCategory}`, { page }
+  ),
+  mediaDetail: ({ mediaType, mediaId }) => tmdbConfig.getUrl(
+    `${mediaType}/${mediaId}`
+  ),
+  mediaGenres: ({ mediaType }) => tmdbConfig.getUrl(
+    `genre/${mediaType}/list`
+  ),
+  mediaCredits: ({ mediaType, mediaId }) => tmdbConfig.getUrl(
+    `${mediaType}/${mediaId}/credits`
+  ),
+  mediaVideos: ({ mediaType, mediaId }) => tmdbConfig.getUrl(
+    `${mediaType}/${mediaId}/videos`
+  ),
+  mediaRecommend: ({ mediaType, mediaId }) => tmdbConfig.getUrl(
+    `${mediaType}/${mediaId}/recommendations`
+  ),
+  mediaImages: ({ mediaType, mediaId }) => tmdbConfig.getUrl(
+    `${mediaType}/${mediaId}/images`
+  ),
+  mediaSearch: ({ mediaType, query, page }) => tmdbConfig.getUrl(
+    `search/${mediaType}`, { query, page }
+  ),
+  personDetail: ({ personId }) => tmdbConfig.getUrl(
+    `person/${personId}`
+  ),
+  personMedias: ({ personId }) => tmdbConfig.getUrl(
+    `person/${personId}/combined_credits`
+  ),
 };
 
 export default tmdbEndpoints;

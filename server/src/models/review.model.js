@@ -7,28 +7,28 @@ export default mongoose.model(
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      required: true
     },
     content: {
       type: String,
-      required: true,
+      required: true
     },
     mediaType: {
       type: String,
       enum: ["tv", "movie"],
-      required: true,
+      required: true
     },
     mediaId: {
       type: String,
-      required: true,
+      required: true
     },
     mediaTitle: {
       type: String,
-      required: true,
+      required: true
     },
     mediaPoster: {
-        type: String,
-        required: true,
-        },
+      type: String,
+      required: true
+    },
   }, modelOptions)
 );
