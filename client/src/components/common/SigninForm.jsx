@@ -31,26 +31,19 @@ const SigninForm = ({ switchAuthState }) => {
     onSubmit: async values => {
       setErrorMessage(undefined);
       setIsLoginRequest(true);
-      console.log("form working");
-      
-      try {
-        const { response } = await userApi.signin(values);
-        setIsLoginRequest(false);
-    
-        if (response) {
-          signinForm.resetForm();
-          dispatch(setUser(response));
-          dispatch(setAuthModalOpen(false));
-          toast.success("Sign in success");
-        } else {
-          setErrorMessage("Invalid credentials");
-        }
-      } catch (err) {
-        setIsLoginRequest(false);
-        setErrorMessage(err.message || "Something went wrong");
+      console.log("asdasdasdasd");
+      const { response, err } = await userApi.signin(values);
+      setIsLoginRequest(false);
+
+      if (response) {
+        signinForm.resetForm();
+        dispatch(setUser(response));
+        dispatch(setAuthModalOpen(false));
+        toast.success("Sign in success");
       }
+
+      if (err) setErrorMessage(err.message);
     }
-    
   });
 
   return (

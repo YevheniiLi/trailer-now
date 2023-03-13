@@ -1,19 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 export const globalLoadingSlice = createSlice({
-        name: 'GlobalMode',
-        initialState: {
-            globalLoading: false,
-        },
-        reducers: {
-            setGlobalLoading: (state, action) => {
-             state.appState = action.payload
-            },
-        }
-})
+  name: "AuthModal",
+  initialState: {
+    globalLoading: false
+  },
+  reducers: {
+    setGlobalLoading: (state, action) => {
+      state.globalLoading = action.payload;
+    }
+  }
+});
 
 export const {
-    setGlobalLoading,
+  setGlobalLoading
 } = globalLoadingSlice.actions;
 
 export default globalLoadingSlice.reducer;

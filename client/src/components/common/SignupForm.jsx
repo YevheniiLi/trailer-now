@@ -9,7 +9,6 @@ import userApi from "../../api/modules/user.api";
 import { setAuthModalOpen } from "../../redux/features/authModalSlice";
 import { setUser } from "../../redux/features/userSlice";
 
-
 const SignupForm = ({ switchAuthState }) => {
   const dispatch = useDispatch();
 
@@ -31,16 +30,17 @@ const SignupForm = ({ switchAuthState }) => {
         .min(8, "password minimum 8 characters")
         .required("password is required"),
       displayName: Yup.string()
-        .min(8, "dispayName minimum 8 characters")
-        .required("dispayName is required"),
+        .min(8, "displayName minimum 8 characters")
+        .required("displayName is required"),
       confirmPassword: Yup.string()
+        .oneOf([Yup.ref("password")], "confirmPassword not match")
         .min(8, "confirmPassword minimum 8 characters")
         .required("confirmPassword is required")
     }),
     onSubmit: async values => {
       setErrorMessage(undefined);
       setIsLoginRequest(true);
-      console.log("form working");
+      console.log("asdasdasdasd");
       const { response, err } = await userApi.signup(values);
       setIsLoginRequest(false);
 
@@ -131,6 +131,5 @@ const SignupForm = ({ switchAuthState }) => {
     </Box>
   );
 };
-
 
 export default SignupForm;
