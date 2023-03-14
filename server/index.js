@@ -8,7 +8,9 @@ import routes from "./src/routes/index.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3001'
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -28,5 +30,3 @@ mongoose.connect(process.env.MONGODB_URL).then(() => {
   console.log({ err });
   process.exit(1);
 });
-
-//test
