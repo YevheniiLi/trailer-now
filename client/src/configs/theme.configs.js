@@ -23,6 +23,9 @@ const themeConfigs = {
               default: "#000000",
               paper: "#131313",
             },
+            // text: {
+            //   primary: '#ffffff',
+            // }
           }
         : {
             primary: {
@@ -34,6 +37,9 @@ const themeConfigs = {
             background: {
               default: colors.grey["100"],
             },
+            // text: {
+            //   primary: '#000000',
+            // }
           };
     return createTheme({
       palette: {

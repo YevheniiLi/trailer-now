@@ -74,12 +74,12 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
       <Swiper
         grabCursor={true}
         loop={true}
-        // modules={[Autoplay]}
+        modules={[Autoplay]}
         style={{ width: "100%", height: "max-content" }}
-      // autoplay={{
-      //   delay: 3000,
-      //   disableOnInteraction: false
-      // }}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false
+      }}
       >
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>
@@ -94,14 +94,16 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
               backgroundSize: "cover",
               backgroundImage: `url(${tmdbConfigs.backdropPath(movie.backdrop_path || movie.poster_path)})`
             }} />
-            <Box sx={{
-              width: "100%",
-              height: "100%",
-              position: "absolute",
-              top: 0,
-              left: 0,
-              ...uiConfigs.style.horizontalGradientBgImage[theme.palette.mode]
-            }} />
+<Box sx={{
+  width: "100%",
+  height: "100%",
+  position: "absolute",
+  top: 0,
+  left: 0,
+  ...uiConfigs.style.gradientBgImage[theme.palette.mode],
+  ...(theme.palette.mode === "dark" && uiConfigs.style.gradientBgImage.dark)
+}} />
+
             <Box sx={{
               width: "100%",
               height: "100%",
@@ -125,7 +127,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
                     fontSize={{ xs: "2rem", md: "2rem", lg: "4rem" }}
                     fontWeight="700"
                     sx={{
-                      ...uiConfigs.style.typoLines(2, "left")
+                      ...uiConfigs.style.typeLines(2, "left")
                     }}
                   >
                     {movie.title || movie.name}
@@ -152,7 +154,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
 
                   {/* overview */}
                   <Typography variant="body1" sx={{
-                    ...uiConfigs.style.typoLines(3)
+                    ...uiConfigs.style.typeLines(3)
                   }}>
                     {movie.overview}
                   </Typography>

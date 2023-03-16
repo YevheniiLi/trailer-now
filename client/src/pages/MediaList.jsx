@@ -36,22 +36,27 @@ const MediaList = () => {
     const getMedias = async () => {
       if (currPage === 1) dispatch(setGlobalLoading(true));
       setMediaLoading(true);
-
+    
       const { response, err } = await mediaApi.getList({
         mediaType,
         mediaCategory: mediaCategories[currCategory],
         page: currPage
       });
-
+    
       setMediaLoading(false);
       dispatch(setGlobalLoading(false));
-
-      if (err) toast.error(err.message);
-      if (response) {
-        if (currPage !== 1) setMedias(m => [...m, ...response.results]);
-        else setMedias([...response.results]);
+    
+      if (err) {
+        toast.error(err.message);
+        return;
       }
+    
+      const newMedias = response.results;
+      setMedias((prevMedias) =>
+        currPage === 1 ? newMedias : [...prevMedias, ...newMedias]
+      );
     };
+    
 
     if (mediaType !== prevMediaType) {
       setCurrCategory(0);

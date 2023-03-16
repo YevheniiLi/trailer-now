@@ -1,12 +1,15 @@
 import { Typography, useTheme } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Logo = () => {
   const theme = useTheme();
 
   return (
-    <Typography fontWeight="700" fontSize="1.7rem">
-      Moon<span style={{ color: theme.palette.primary.main }}>Flix</span>
-    </Typography>
+    <Link to="/" component={Link} style={{ textDecoration: 'none' }}>
+      <Typography fontWeight="700" fontSize="1.7rem" color="secondary" style={{ color: '#FFFFFF' }}>
+        Trailers<span style={{ color: theme.palette.primary.main }}>Now</span>
+      </Typography>
+    </Link>
   );
 };
 

@@ -35,7 +35,7 @@ const CastSlide = ({ casts }) => {
                   padding: "10px",
                   backgroundColor: "rgba(0,0,0,0.6)"
                 }}>
-                  <Typography sx={{...uiConfigs.style.typoLines(1, "left")}}>
+                  <Typography sx={{...uiConfigs.style.typeLines(1, "left")}}>
                     {cast.name}
                   </Typography>
                 </Box>

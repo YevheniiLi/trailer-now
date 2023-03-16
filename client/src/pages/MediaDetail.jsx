@@ -152,7 +152,7 @@ const MediaDetail = () => {
                     variant="h4"
                     fontSize={{ xs: "2rem", md: "2rem", lg: "4rem" }}
                     fontWeight="700"
-                    sx={{ ...uiConfigs.style.typoLines(2, "left") }}
+                    sx={{ ...uiConfigs.style.typeLines(2, "left") }}
                   >
                     {`${media.title || media.name} ${mediaType === tmdbConfigs.mediaType.movie ? media.release_date.split("-")[0] : media.first_air_date.split("-")[0]}`}
                   </Typography>
@@ -180,7 +180,7 @@ const MediaDetail = () => {
                   {/* overview */}
                   <Typography
                     variant="body1"
-                    sx={{ ...uiConfigs.style.typoLines(5) }}
+                    sx={{ ...uiConfigs.style.typeLines(5) }}
                   >
                     {media.overview}
                   </Typography>

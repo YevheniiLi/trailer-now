@@ -26,7 +26,7 @@ const PersonDetail = () => {
     };
 
     getPerson();
-  }, [personId]);
+  }, [dispatch, personId]);
 
   return (
     <>
@@ -60,7 +60,7 @@ const PersonDetail = () => {
                     {person.deathday && ` - ${person.deathday && person.deathday.split("-")[0]}`}
                     {")"}
                   </Typography>
-                  <Typography sx={{ ...uiConfigs.style.typoLines(10) }}>
+                  <Typography sx={{ ...uiConfigs.style.typeLines(10) }}>
                     {person.biography}
                   </Typography>
                 </Stack>

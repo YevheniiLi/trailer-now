@@ -61,7 +61,7 @@ const ReviewItem = ({ review, onRemoved }) => {
           >
             <Typography
               variant="h6"
-              sx={{ ...uiConfigs.style.typoLines(1, "left") }}
+              sx={{ ...uiConfigs.style.typeLines(1, "left") }}
             >
               {review.mediaTitle}
             </Typography>
@@ -117,7 +117,7 @@ const ReviewList = () => {
     };
 
     getReviews();
-  }, []);
+  }, [dispatch]);
 
   const onLoadMore = () => {
     setFilteredReviews([...filteredReviews, ...[...reviews].splice(page * skip, skip)]);
