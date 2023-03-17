@@ -13,8 +13,9 @@ const getList = async (req, res) => {
     const response = await tmdbApi.mediaList({ mediaType, mediaCategory, page });
 
     return responseHandler.ok(res, response);
-  } catch {
-    responseHandler.error(res);
+  } catch (e) {
+    console.error(e);
+    return responseHandler.error(res);
   }
 };
 
@@ -25,8 +26,9 @@ const getGenres = async (req, res) => {
     const response = await tmdbApi.mediaGenres({ mediaType });
 
     return responseHandler.ok(res, response);
-  } catch {
-    responseHandler.error(res);
+  } catch (e) {
+    console.error(e);
+    return responseHandler.error(res);
   }
 };
 
@@ -41,9 +43,10 @@ const search = async (req, res) => {
       mediaType: mediaType === "people" ? "person" : mediaType
     });
 
-    responseHandler.ok(res, response);
-  } catch {
-    responseHandler.error(res);
+    return responseHandler.ok(res, response);
+  } catch (e) {
+    console.error(e);
+    return responseHandler.error(res);
   }
 };
 
@@ -80,10 +83,10 @@ const getDetail = async (req, res) => {
 
     media.reviews = await reviewModel.find({ mediaId }).populate("user").sort("-createdAt");
 
-    responseHandler.ok(res, media);
+    return responseHandler.ok(res, media);
   } catch (e) {
-    console.log(e);
-    responseHandler.error(res);
+    console.error(e);
+    return responseHandler.error(res);
   }
 };
 

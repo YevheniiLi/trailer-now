@@ -49,7 +49,4 @@ const userApi = {
   }
 };
 
-
-// create fix api
-
 export default userApi;
