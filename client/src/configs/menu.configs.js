@@ -15,15 +15,15 @@ const main = [
     },
     {
         display: 'movies',
-        path: '/movies',
+        path: '/movie',
         icon: <SlideshowOutlinedIcon />,
-        state: 'movies'
+        state: 'movie'
     },
     {
         display: 'tv series',
         path: '/tv',
         icon: <LiveTvOutlinedIcon />,
-        state: 'hometv'
+        state: 'tv'
     },
     {
         display: 'search',

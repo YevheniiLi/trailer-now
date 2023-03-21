@@ -18,7 +18,6 @@ const App = () => {
 
   return (
     <ThemeProvider theme={themeConfigs.custom({ mode: themeMode })}>
-      {/* config toastify */}
       <ToastContainer
         position="bottom-left"
         autoClose={5000}
