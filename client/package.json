@@ -1,8 +1,8 @@
 {
-  "name": "mv-app",
+  "name": "trailer-now",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://YevheniiLi.github.io/mv-app",
+  "homepage": "https://YevheniiLi.github.io/trailer-now",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
