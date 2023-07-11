@@ -11,8 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import HomePage from "./pages/HomePage";
-
+import MainLayout from './components/layout/MainLayout';
 const App = () => {
   const { themeMode } = useSelector((state) => state.themeMode);
 
@@ -34,7 +33,7 @@ const App = () => {
       {/* app routes */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />}>
+          <Route path="/" element={<MainLayout />}>
             {routes.map((route, index) => (
               route.index ? (
                 <Route
